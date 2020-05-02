@@ -1,0 +1,33 @@
+---ROUND 1---
+Sender: Joe | Receiver: Bob
+Video: bunny.mp4
+Number of times video was played: 2
+Sender sent this message: it was raining yesterday! 😎 [2020-05-01 22:59:15.659]
+Sender's emotion: Surprise | Sender's emotion intensity: 4.0 | Sender's confidence in receiver's emotion choice: 3.75 | Sender's confidence in receiver's emotion intensity choice: 4.25 [2020-05-01 22:59:55.114]
+Receiver's emotion: Disgust | Receiver's emotion intensity: 3.75 | Receiver's confidence in chosen emotion: 4.5 | Receiver's confidence in chosen emotion intensity: 3.25 [2020-05-01 23:00:34.696]
+---ROUND 2---
+Sender: Joe | Receiver: Bob
+Video: cartoon.mp4
+Number of times video was played: 1
+Sender sent this message: I am EXHAUSTED! 😥 [2020-05-01 23:02:34.235]
+Sender's emotion: Disgust | Sender's emotion intensity: 4.25 | Sender's confidence in receiver's emotion choice: 3.5 | Sender's confidence in receiver's emotion intensity choice: 4.5 [2020-05-01 23:02:43.395]
+Receiver's emotion: Fear | Receiver's emotion intensity: 4.5 | Receiver's confidence in chosen emotion: 4.0 | Receiver's confidence in chosen emotion intensity: 3.75 [2020-05-01 23:02:47.702]
+---ROUND 3---
+Sender: Joe | Receiver: Bob
+Video: earth.mp4
+Number of times video was played: 1
+Sender sent this message: The Earth spins slowly...😖😩😈💀 [2020-05-01 23:03:13.562]
+Sender's emotion: Surprise | Sender's emotion intensity: 3.25 | Sender's confidence in receiver's emotion choice: 2.75 | Sender's confidence in receiver's emotion intensity choice: 4.5 [2020-05-01 23:03:24.003]
+Receiver's emotion: Fear | Receiver's emotion intensity: 2.75 | Receiver's confidence in chosen emotion: 3.5 | Receiver's confidence in chosen emotion intensity: 2.5 [2020-05-01 23:03:37.55]
+--- SENDER DATA ---
+Native language: English
+Emoji use: All the time
+Age: 21
+Gender: Female
+Handedness: Right
+--- RECEIVER DATA ---
+Native language: French
+Emoji use: Never
+Age: 34
+Gender: Male
+Handedness: Both
