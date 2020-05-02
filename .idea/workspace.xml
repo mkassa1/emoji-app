@@ -1,0 +1,687 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/description.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/fontawesomefx_8_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EmojiApp.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/EmojiApp/META-INF/EmojiApp.kotlin_module" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/EmojiApp/client/ClientController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/EmojiApp/client/PlayerClient.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/EmojiApp/client/receiver/Receiver.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/EmojiApp/client/receiver/ReceiverClient.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/EmojiApp/client/receiver/ReceiverController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/EmojiApp/client/receiver/ReceiverPopupController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/EmojiApp/client/receiver/receiver_popup.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/EmojiApp/client/receiver/receiver_screen.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/EmojiApp/client/sender/Sender.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/EmojiApp/client/sender/SenderClient.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/EmojiApp/client/sender/SenderController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/EmojiApp/client/sender/SenderPopupController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/EmojiApp/client/sender/sender_popup.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/EmojiApp/client/sender/sender_screen.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/EmojiApp/data/OpenSansEmoji/OpenSansEmoji.otf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/EmojiApp/data/OpenSansEmoji/OpenSansEmoji.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/EmojiApp/data/OpenSansEmoji/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/EmojiApp/data/images/emojis/angry-face-with-horns.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/EmojiApp/data/images/emojis/angry-face.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/EmojiApp/data/images/emojis/anguished-face.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/EmojiApp/data/images/emojis/astonished-face.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/EmojiApp/data/images/emojis/beating-heart.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/EmojiApp/data/images/emojis/broken-heart.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/EmojiApp/data/images/emojis/call-me-hand.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/EmojiApp/data/images/emojis/clapping-hands.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/EmojiApp/data/images/emojis/cold-face.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/EmojiApp/data/images/emojis/confounded-face.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/EmojiApp/data/images/emojis/confused-face.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/EmojiApp/data/images/emojis/crazy-face.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/EmojiApp/data/images/emojis/crossed-fingers.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/EmojiApp/data/images/emojis/crying-face.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/EmojiApp/data/images/emojis/disappointed-but-relieved-face.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/EmojiApp/data/images/emojis/disappointed-face.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/EmojiApp/data/images/emojis/dizzy-face.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/EmojiApp/data/images/emojis/double-exclamation-mark.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/EmojiApp/data/images/emojis/drooling-face.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/EmojiApp/data/images/emojis/exclamation-mark.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/EmojiApp/data/images/emojis/exclamation-question-mark.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/EmojiApp/data/images/emojis/exploding-head.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/EmojiApp/data/images/emojis/expressionless-face.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/EmojiApp/data/images/emojis/eyes.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/EmojiApp/data/images/emojis/face-blowing-a-kiss.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/EmojiApp/data/images/emojis/face-savouring-delicious-food.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/EmojiApp/data/images/emojis/face-screaming-in-fear.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/EmojiApp/data/images/emojis/face-vomiting.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/EmojiApp/data/images/emojis/face-with-cold-sweat.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/EmojiApp/data/images/emojis/face-with-hand-over-mouth.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/EmojiApp/data/images/emojis/face-with-head-bandage.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/EmojiApp/data/images/emojis/face-with-medical-mask.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/EmojiApp/data/images/emojis/face-with-monocle.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/EmojiApp/data/images/emojis/face-with-open-mouth-and-cold-sweat.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/EmojiApp/data/images/emojis/face-with-open-mouth.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/EmojiApp/data/images/emojis/face-with-raised-eyebrow.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/EmojiApp/data/images/emojis/face-with-rolling-eyes.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/EmojiApp/data/images/emojis/face-with-steam-from-nose.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/EmojiApp/data/images/emojis/face-with-stuck-out-tongue-and-closed-eyes.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/EmojiApp/data/images/emojis/face-with-stuck-out-tongue-and-winking-eye.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/EmojiApp/data/images/emojis/face-with-stuck-out-tongue.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/EmojiApp/data/images/emojis/face-with-symbols-over-mouth.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/EmojiApp/data/images/emojis/face-with-tears-of-joy.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/EmojiApp/data/images/emojis/face-without-mouth.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/EmojiApp/data/images/emojis/fearful-face.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/EmojiApp/data/images/emojis/flushed-face.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/EmojiApp/data/images/emojis/frowning-face-with-open-mouth.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/EmojiApp/data/images/emojis/frowning-face.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/EmojiApp/data/images/emojis/grimacing-face.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/EmojiApp/data/images/emojis/grinning-face-with-smiling-eyes.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/EmojiApp/data/images/emojis/grinning-face.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/EmojiApp/data/images/emojis/growing-heart.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/EmojiApp/data/images/emojis/handshake.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/EmojiApp/data/images/emojis/heart-with-ribbon.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/EmojiApp/data/images/emojis/hot-face.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/EmojiApp/data/images/emojis/hugging-face.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/EmojiApp/data/images/emojis/hushed-face.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/EmojiApp/data/images/emojis/kissing-face-with-closed-eyes.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/EmojiApp/data/images/emojis/kissing-face-with-smiling-eyes.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/EmojiApp/data/images/emojis/kissing-face.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/EmojiApp/data/images/emojis/loudly-crying-face.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/EmojiApp/data/images/emojis/love-you-gesture.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/EmojiApp/data/images/emojis/lying-face.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/EmojiApp/data/images/emojis/man-facepalming.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/EmojiApp/data/images/emojis/man-gesturing-no.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/EmojiApp/data/images/emojis/man-gesturing-ok.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/EmojiApp/data/images/emojis/man-shrugging.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/EmojiApp/data/images/emojis/man-tipping-hand.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/EmojiApp/data/images/emojis/money-mouth-face.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/EmojiApp/data/images/emojis/nauseated-face.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/EmojiApp/data/images/emojis/nerd-face.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/EmojiApp/data/images/emojis/neutral-face.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/EmojiApp/data/images/emojis/ok-hand.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/EmojiApp/data/images/emojis/oncoming-fist.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/EmojiApp/data/images/emojis/open-hands.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/EmojiApp/data/images/emojis/palms-up-together.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/EmojiApp/data/images/emojis/partying-face.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/EmojiApp/data/images/emojis/pensive-face.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/EmojiApp/data/images/emojis/persevering-face.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/EmojiApp/data/images/emojis/pleading-face.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/EmojiApp/data/images/emojis/pouting-face.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/EmojiApp/data/images/emojis/question-mark.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/EmojiApp/data/images/emojis/raised-fist.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/EmojiApp/data/images/emojis/raised-hand-with-fingers-splayed.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/EmojiApp/data/images/emojis/raising-hands.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/EmojiApp/data/images/emojis/red-heart.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/EmojiApp/data/images/emojis/relieved-face.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/EmojiApp/data/images/emojis/revolving-hearts.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/EmojiApp/data/images/emojis/right-facing-fist.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/EmojiApp/data/images/emojis/rolling-on-the-floor-laughing.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/EmojiApp/data/images/emojis/shushing-face.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/EmojiApp/data/images/emojis/sign-of-the-horns.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/EmojiApp/data/images/emojis/skull.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/EmojiApp/data/images/emojis/sleeping-face.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/EmojiApp/data/images/emojis/sleepy-face.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/EmojiApp/data/images/emojis/slightly-frowning-face.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/EmojiApp/data/images/emojis/slightly-smiling-face.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/EmojiApp/data/images/emojis/smiling-face-with-3-hearts.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/EmojiApp/data/images/emojis/smiling-face-with-halo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/EmojiApp/data/images/emojis/smiling-face-with-heart-shaped-eyes.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/EmojiApp/data/images/emojis/smiling-face-with-horns.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/EmojiApp/data/images/emojis/smiling-face-with-open-mouth-and-closed-eyes.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/EmojiApp/data/images/emojis/smiling-face-with-open-mouth-and-cold-sweat.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/EmojiApp/data/images/emojis/smiling-face-with-open-mouth-and-smiling-eyes.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/EmojiApp/data/images/emojis/smiling-face-with-open-mouth.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/EmojiApp/data/images/emojis/smiling-face-with-smiling-eyes.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/EmojiApp/data/images/emojis/smiling-face-with-sunglasses.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/EmojiApp/data/images/emojis/smiling-face.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/EmojiApp/data/images/emojis/smirking-face.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/EmojiApp/data/images/emojis/sneezing-face.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/EmojiApp/data/images/emojis/sparkling-heart.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/EmojiApp/data/images/emojis/star-struck.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/EmojiApp/data/images/emojis/thinking-face.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/EmojiApp/data/images/emojis/thumbs-down.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/EmojiApp/data/images/emojis/thumbs-up.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/EmojiApp/data/images/emojis/tired-face.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/EmojiApp/data/images/emojis/two-hearts.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/EmojiApp/data/images/emojis/unamused-face.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/EmojiApp/data/images/emojis/upside-down-face.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/EmojiApp/data/images/emojis/victory-hand.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/EmojiApp/data/images/emojis/waving-hand.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/EmojiApp/data/images/emojis/weary-face.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/EmojiApp/data/images/emojis/winking-face.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/EmojiApp/data/images/emojis/woman-facepalming.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/EmojiApp/data/images/emojis/woman-gesturing-no.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/EmojiApp/data/images/emojis/woman-gesturing-ok.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/EmojiApp/data/images/emojis/woman-shrugging.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/EmojiApp/data/images/emojis/woman-tipping-hand.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/EmojiApp/data/images/emojis/woozy-face.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/EmojiApp/data/images/emojis/worried-face.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/EmojiApp/data/images/emojis/zipper-mouth-face.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/EmojiApp/data/images/smily-icon.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/EmojiApp/data/out.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/EmojiApp/data/test_videos/bunny.mp4" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/EmojiApp/data/test_videos/cartoon.mp4" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/EmojiApp/data/test_videos/earth.mp4" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/EmojiApp/data/turns.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/EmojiApp/game/CommunicationConstants.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/EmojiApp/game/EmojiMappings.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/EmojiApp/game/EmojiPicker$1.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/EmojiApp/game/EmojiPicker.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/EmojiApp/game/Game$Player.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/EmojiApp/game/Game.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/EmojiApp/game/PopupController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/EmojiApp/game/VideoPlayer.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/EmojiApp/game/emoji_picker.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/EmojiApp/game/popup.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/EmojiApp/game/style.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/EmojiApp/sample/Controller.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/EmojiApp/sample/Main.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/EmojiApp/sample/sample.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/EmojiApp/server/Server.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/client/receiver/Receiver.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/client/receiver/ReceiverClient.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/client/receiver/ReceiverController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/client/receiver/ReceiverPopupController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/client/receiver/receiver_popup.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/client/receiver/receiver_screen.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/client/sender/Sender.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/client/sender/SenderClient.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/client/sender/SenderController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/client/sender/SenderPopupController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/client/sender/sender_popup.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/client/sender/sender_screen.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/data/OpenSansEmoji" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/data/images/emojis/angry-face-with-horns.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/data/images/emojis/angry-face.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/data/images/emojis/anguished-face.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/data/images/emojis/astonished-face.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/data/images/emojis/beating-heart.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/data/images/emojis/broken-heart.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/data/images/emojis/call-me-hand.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/data/images/emojis/clapping-hands.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/data/images/emojis/cold-face.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/data/images/emojis/confounded-face.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/data/images/emojis/confused-face.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/data/images/emojis/crazy-face.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/data/images/emojis/crossed-fingers.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/data/images/emojis/crying-face.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/data/images/emojis/disappointed-but-relieved-face.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/data/images/emojis/disappointed-face.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/data/images/emojis/dizzy-face.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/data/images/emojis/double-exclamation-mark.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/data/images/emojis/drooling-face.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/data/images/emojis/exclamation-mark.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/data/images/emojis/exclamation-question-mark.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/data/images/emojis/exploding-head.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/data/images/emojis/expressionless-face.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/data/images/emojis/eyes.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/data/images/emojis/face-blowing-a-kiss.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/data/images/emojis/face-savouring-delicious-food.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/data/images/emojis/face-screaming-in-fear.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/data/images/emojis/face-vomiting.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/data/images/emojis/face-with-cold-sweat.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/data/images/emojis/face-with-hand-over-mouth.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/data/images/emojis/face-with-head-bandage.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/data/images/emojis/face-with-medical-mask.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/data/images/emojis/face-with-monocle.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/data/images/emojis/face-with-open-mouth-and-cold-sweat.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/data/images/emojis/face-with-open-mouth.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/data/images/emojis/face-with-raised-eyebrow.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/data/images/emojis/face-with-rolling-eyes.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/data/images/emojis/face-with-steam-from-nose.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/data/images/emojis/face-with-stuck-out-tongue-and-closed-eyes.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/data/images/emojis/face-with-stuck-out-tongue-and-winking-eye.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/data/images/emojis/face-with-stuck-out-tongue.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/data/images/emojis/face-with-symbols-over-mouth.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/data/images/emojis/face-with-tears-of-joy.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/data/images/emojis/face-without-mouth.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/data/images/emojis/fearful-face.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/data/images/emojis/flushed-face.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/data/images/emojis/frowning-face-with-open-mouth.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/data/images/emojis/frowning-face.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/data/images/emojis/grimacing-face.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/data/images/emojis/grinning-face-with-smiling-eyes.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/data/images/emojis/grinning-face.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/data/images/emojis/growing-heart.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/data/images/emojis/handshake.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/data/images/emojis/heart-with-ribbon.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/data/images/emojis/hot-face.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/data/images/emojis/hugging-face.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/data/images/emojis/hushed-face.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/data/images/emojis/kissing-face-with-closed-eyes.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/data/images/emojis/kissing-face-with-smiling-eyes.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/data/images/emojis/kissing-face.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/data/images/emojis/loudly-crying-face.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/data/images/emojis/love-you-gesture.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/data/images/emojis/lying-face.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/data/images/emojis/man-facepalming.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/data/images/emojis/man-gesturing-no.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/data/images/emojis/man-gesturing-ok.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/data/images/emojis/man-shrugging.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/data/images/emojis/man-tipping-hand.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/data/images/emojis/money-mouth-face.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/data/images/emojis/nauseated-face.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/data/images/emojis/nerd-face.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/data/images/emojis/neutral-face.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/data/images/emojis/ok-hand.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/data/images/emojis/oncoming-fist.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/data/images/emojis/open-hands.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/data/images/emojis/palms-up-together.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/data/images/emojis/partying-face.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/data/images/emojis/pensive-face.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/data/images/emojis/persevering-face.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/data/images/emojis/pleading-face.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/data/images/emojis/pouting-face.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/data/images/emojis/question-mark.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/data/images/emojis/raised-fist.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/data/images/emojis/raised-hand-with-fingers-splayed.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/data/images/emojis/raising-hands.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/data/images/emojis/red-heart.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/data/images/emojis/relieved-face.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/data/images/emojis/revolving-hearts.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/data/images/emojis/right-facing-fist.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/data/images/emojis/rolling-on-the-floor-laughing.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/data/images/emojis/shushing-face.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/data/images/emojis/sign-of-the-horns.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/data/images/emojis/skull.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/data/images/emojis/sleeping-face.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/data/images/emojis/sleepy-face.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/data/images/emojis/slightly-frowning-face.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/data/images/emojis/slightly-smiling-face.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/data/images/emojis/smiling-face-with-3-hearts.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/data/images/emojis/smiling-face-with-halo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/data/images/emojis/smiling-face-with-heart-shaped-eyes.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/data/images/emojis/smiling-face-with-horns.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/data/images/emojis/smiling-face-with-open-mouth-and-closed-eyes.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/data/images/emojis/smiling-face-with-open-mouth-and-cold-sweat.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/data/images/emojis/smiling-face-with-open-mouth-and-smiling-eyes.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/data/images/emojis/smiling-face-with-open-mouth.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/data/images/emojis/smiling-face-with-smiling-eyes.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/data/images/emojis/smiling-face-with-sunglasses.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/data/images/emojis/smiling-face.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/data/images/emojis/smirking-face.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/data/images/emojis/sneezing-face.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/data/images/emojis/sparkling-heart.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/data/images/emojis/star-struck.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/data/images/emojis/thinking-face.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/data/images/emojis/thumbs-down.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/data/images/emojis/thumbs-up.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/data/images/emojis/tired-face.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/data/images/emojis/two-hearts.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/data/images/emojis/unamused-face.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/data/images/emojis/upside-down-face.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/data/images/emojis/victory-hand.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/data/images/emojis/waving-hand.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/data/images/emojis/weary-face.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/data/images/emojis/winking-face.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/data/images/emojis/woman-facepalming.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/data/images/emojis/woman-gesturing-no.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/data/images/emojis/woman-gesturing-ok.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/data/images/emojis/woman-shrugging.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/data/images/emojis/woman-tipping-hand.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/data/images/emojis/woozy-face.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/data/images/emojis/worried-face.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/data/images/emojis/zipper-mouth-face.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/data/images/smily-icon.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/data/out.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/data/test_videos/bunny.mp4" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/data/test_videos/cartoon.mp4" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/data/test_videos/earth.mp4" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/data/turns.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/game/CommunicationConstants.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/game/EmojiMappings.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/game/EmojiPicker.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/game/Game.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/game/PopupController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/game/VideoPlayer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/game/emoji_picker.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/game/popup.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/game/style.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/server/Server.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CreatePatchCommitExecutor">
+    <option name="PATCH_PATH" value="" />
+  </component>
+  <component name="DebuggerManager">
+    <breakpoint_any default_suspend_policy="SuspendAll" default_condition_enabled="true" converted="true">
+      <breakpoint>
+        <option name="NOTIFY_CAUGHT" value="true" />
+        <option name="NOTIFY_UNCAUGHT" value="true" />
+        <option name="ENABLED" value="false" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="SUSPEND" value="true" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="true" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+      <breakpoint>
+        <option name="NOTIFY_CAUGHT" value="true" />
+        <option name="NOTIFY_UNCAUGHT" value="true" />
+        <option name="ENABLED" value="false" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="SUSPEND" value="true" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="true" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+    </breakpoint_any>
+    <ui_properties converted="true" />
+    <breakpoint_rules converted="true" />
+  </component>
+  <component name="FavoritesManager">
+    <favorites_list name="JavaFxApplication" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="JavaFXApplication" />
+        <option value="FxmlFile" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="FindManager">
+    <FindUsagesManager>
+      <setting name="OPEN_NEW_TAB" value="false" />
+    </FindUsagesManager>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
+  <component name="ProjectId" id="1b5sx7EPQNjnfxa4dJ3spJWbPO7" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectReloadState">
+    <option name="STATE" value="0" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="GoToClass.includeLibraries" value="false" />
+    <property name="GoToClass.toSaveIncludeLibraries" value="false" />
+    <property name="GoToFile.includeJavaFiles" value="false" />
+    <property name="MemberChooser.copyJavadoc" value="false" />
+    <property name="MemberChooser.showClasses" value="true" />
+    <property name="MemberChooser.sorted" value="false" />
+    <property name="OverrideImplement.combined" value="false" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="dynamic.classpath" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/client/sender" />
+    <property name="project.structure.last.edited" value="Libraries" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="recentsLimit" value="5" />
+    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\mayla\IdeaProjects\EmojiApp\src\client\sender" />
+      <recent name="C:\Users\mayla\IdeaProjects\EmojiApp\src\game" />
+      <recent name="C:\Users\mayla\IdeaProjects\EmojiApp\src\data" />
+      <recent name="C:\Users\mayla\IdeaProjects\EmojiApp\src\client\receiver" />
+      <recent name="C:\Users\mayla\IdeaProjects\EmojiApp\src\client" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="game" />
+      <recent name="client.sender" />
+      <recent name="client.receiver" />
+      <recent name="client" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\mayla\IdeaProjects\EmojiApp\src\data" />
+      <recent name="C:\Users\mayla\IdeaProjects\EmojiApp\src\client\sender" />
+      <recent name="C:\Users\mayla\IdeaProjects\EmojiApp\src\client\receiver" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Application.Receiver">
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <module name="" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="HTML_FILE_NAME" />
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <option name="VM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <method />
+    </configuration>
+    <configuration default="true" type="DartUnitRunConfigurationType" factoryName="DartUnit">
+      <option name="VMOptions" />
+      <option name="arguments" />
+      <option name="filePath" />
+      <option name="scope" value="ALL" />
+      <option name="testName" />
+      <method />
+    </configuration>
+    <configuration name="&lt;template&gt;" type="WebApp" default="true" selected="false">
+      <Host>localhost</Host>
+      <Port>5050</Port>
+    </configuration>
+    <configuration name="EmojiPicker" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="game.EmojiPicker" />
+      <module name="EmojiApp" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="game.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Main" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="sample.Main" />
+      <module name="EmojiApp" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="sample.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Run" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Receiver" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="client.receiver.Receiver" />
+      <module name="EmojiApp" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="client.sender.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Sender" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="client.sender.Sender" />
+      <module name="EmojiApp" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="client.sender.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Server" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="server.Server" />
+      <module name="EmojiApp" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="server.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="Application" factoryName="Application">
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="JUnit" factoryName="JUnit">
+      <option name="TEST_OBJECT" value="class" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="moduleWithDependencies" />
+      </option>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="TestNG">
+      <option name="TEST_OBJECT" value="CLASS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="moduleWithDependencies" />
+      </option>
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType">
+      <module name="" />
+      <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m" />
+      <option name="PROGRAM_PARAMETERS" />
+      <predefined_log_file enabled="true" id="idea.log" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Application.Main" />
+      <item itemvalue="Application.Server" />
+      <item itemvalue="Application.Sender" />
+      <item itemvalue="Application.Receiver" />
+      <item itemvalue="Application.EmojiPicker" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Receiver" />
+        <item itemvalue="Application.Sender" />
+        <item itemvalue="Application.Server" />
+        <item itemvalue="Application.EmojiPicker" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="" />
+      <created>1359379246138</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1359379246138</updated>
+      <workItem from="1359379250712" duration="1302000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="1302000" />
+  </component>
+  <component name="UnknownFeatures">
+    <option featureType="com.intellij.fileTypeFactory" implementationName="*.css" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="OFFER_MOVE_TO_ANOTHER_CHANGELIST_ON_PARTIAL_COMMIT" value="true" />
+    <option name="INCLUDE_TEXT_INTO_SHELF" value="false" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="508" y="285" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1588192905218">
+      <screen x="0" y="0" width="1504" height="963" />
+    </state>
+    <state x="508" y="285" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1504.963@0.0.1504.963" timestamp="1588192905218" />
+    <state x="558" y="191" key="#com.intellij.ide.util.MemberChooser" timestamp="1588273983054">
+      <screen x="0" y="0" width="1504" height="963" />
+    </state>
+    <state x="558" y="191" key="#com.intellij.ide.util.MemberChooser/0.0.1504.963@0.0.1504.963" timestamp="1588273983054" />
+    <state x="859" y="229" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1588366977535">
+      <screen x="0" y="0" width="1504" height="963" />
+    </state>
+    <state x="859" y="229" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1504.963@0.0.1504.963" timestamp="1588366977535" />
+    <state x="440" y="248" key="FileChooserDialogImpl" timestamp="1587953116547">
+      <screen x="0" y="0" width="1504" height="963" />
+    </state>
+    <state x="440" y="248" key="FileChooserDialogImpl/0.0.1504.963@0.0.1504.963" timestamp="1587953116547" />
+    <state width="1461" height="303" key="GridCell.Tab.0.bottom" timestamp="1588385025004">
+      <screen x="0" y="0" width="1504" height="963" />
+    </state>
+    <state width="1461" height="303" key="GridCell.Tab.0.bottom/0.0.1504.963@0.0.1504.963" timestamp="1588385025004" />
+    <state width="1461" height="303" key="GridCell.Tab.0.center" timestamp="1588385025004">
+      <screen x="0" y="0" width="1504" height="963" />
+    </state>
+    <state width="1461" height="303" key="GridCell.Tab.0.center/0.0.1504.963@0.0.1504.963" timestamp="1588385025004" />
+    <state width="1461" height="303" key="GridCell.Tab.0.left" timestamp="1588385025003">
+      <screen x="0" y="0" width="1504" height="963" />
+    </state>
+    <state width="1461" height="303" key="GridCell.Tab.0.left/0.0.1504.963@0.0.1504.963" timestamp="1588385025003" />
+    <state width="1461" height="303" key="GridCell.Tab.0.right" timestamp="1588385025004">
+      <screen x="0" y="0" width="1504" height="963" />
+    </state>
+    <state width="1461" height="303" key="GridCell.Tab.0.right/0.0.1504.963@0.0.1504.963" timestamp="1588385025004" />
+    <state x="213" y="81" key="SettingsEditor" timestamp="1588384807590">
+      <screen x="0" y="0" width="1504" height="963" />
+    </state>
+    <state x="213" y="81" key="SettingsEditor/0.0.1504.963@0.0.1504.963" timestamp="1588384807590" />
+    <state x="295" y="202" width="609" height="536" key="find.popup" timestamp="1588384549262">
+      <screen x="0" y="0" width="1504" height="963" />
+    </state>
+    <state x="295" y="202" width="609" height="536" key="find.popup/0.0.1504.963@0.0.1504.963" timestamp="1588384549262" />
+    <state x="409" y="222" key="run.anything.popup" timestamp="1588190686301">
+      <screen x="0" y="0" width="1504" height="963" />
+    </state>
+    <state x="409" y="222" key="run.anything.popup/0.0.1504.963@0.0.1504.963" timestamp="1588190686301" />
+    <state x="415" y="205" width="672" height="678" key="search.everywhere.popup" timestamp="1588366046898">
+      <screen x="0" y="0" width="1504" height="963" />
+    </state>
+    <state x="415" y="205" width="672" height="678" key="search.everywhere.popup/0.0.1504.963@0.0.1504.963" timestamp="1588366046898" />
+  </component>
+</project>

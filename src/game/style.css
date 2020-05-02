@@ -1,0 +1,42 @@
+.column-filter .context-menu {
+    -fx-background-color: white;
+}
+
+.column-filter .context-menu:focused {
+    -fx-background-color: white;
+}
+
+.menu-item:focused {
+   -fx-background-color: white;
+}
+
+.scroll-pane:focused {
+   -fx-background-color: transparent;
+}
+
+.pane:focused {
+   -fx-background-color: transparent;
+}
+
+.tile-pane:focused {
+   -fx-background-color: white;
+}
+
+.custom-menu-item:focused {
+   -fx-background-color: transparent;
+}
+
+h1::before  {
+  content: "\01F354";
+}
+
+.column-filter .custom-menu-item {
+    -fx-background-color: white;
+    -fx-padding: 0;
+}
+
+.column-filter .custom-menu-item:focused {
+    -fx-background-color: white;
+}
+
+<i class="em em---1" aria-role="presentation" aria-label="THUMBS UP SIGN"></i>
