@@ -31,4 +31,5 @@ round, with a new video.
 
 (12) Stop Server.java to stop the Server. The Sender and Receiver client programs close on their own.
 
-*Note: Update 'turns.txt' with the number of rounds before a swap in order to see how the Sender and Receiver are able to swap turns.
+*Note: Update 'turns.txt' with the number of rounds before a swap in order to see how the Sender and Receiver are able to swap turns. 
+A value of -1 = no swap.
