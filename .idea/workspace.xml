@@ -258,11 +258,11 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="Application.Main" />
-      <item itemvalue="Application.Server" />
-      <item itemvalue="Application.Sender" />
-      <item itemvalue="Application.Receiver" />
       <item itemvalue="Application.EmojiPicker" />
+      <item itemvalue="Application.Main" />
+      <item itemvalue="Application.Receiver" />
+      <item itemvalue="Application.Sender" />
+      <item itemvalue="Application.Server" />
     </list>
     <recent_temporary>
       <list>
