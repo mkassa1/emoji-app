@@ -1,5 +1,3 @@
-"# emoji-app" 
-=======
 # emoji-app
 Emotions through text program for Penn's Cultural Evolution of Language Lab
 
