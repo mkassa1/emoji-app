@@ -28,3 +28,7 @@ round, with a new video.
 
 (11) After filling it out and clicking "Submit," the results of the game (incl. the exit form data) will appear in the results file 
 (data --> out.txt). See out.txt to see an example.
+
+(12) Stop Server.java to stop the Server. The Sender and Receiver client programs close on their own.
+
+*Note: Update 'turns.txt' with the number of rounds before a swap in order to see how the Sender and Receiver are able to swap turns.
