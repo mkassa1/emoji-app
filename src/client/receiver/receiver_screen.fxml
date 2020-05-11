@@ -75,7 +75,6 @@
                                              <Button layoutX="300.0" layoutY="300.0" mnemonicParsing="false" onAction="#onEmojiSelect" style="-fx-background-radius: 15em; -fx-min-width: 30px; -fx-min-height: 30px; -fx-max-width: 30px; -fx-max-height: 30px; -fx-background-color: -fx-body-color; -fx-background-insets: 0px; -fx-padding: 0px; -fx-background-image: url(/data/images/emojis/disappointed-face.png); -fx-background-size: 30px 30px; -fx-background-repeat: no-repeat; -fx-background-position: center;" />
                                              <Button layoutX="310.0" layoutY="310.0" mnemonicParsing="false" onAction="#onEmojiSelect" style="-fx-background-radius: 15em; -fx-min-width: 30px; -fx-min-height: 30px; -fx-max-width: 30px; -fx-max-height: 30px; -fx-background-color: -fx-body-color; -fx-background-insets: 0px; -fx-padding: 0px; -fx-background-image: url(/data/images/emojis/pensive-face.png); -fx-background-size: 30px 30px; -fx-background-repeat: no-repeat; -fx-background-position: center;" />
                                              <Button layoutX="320.0" layoutY="320.0" mnemonicParsing="false" onAction="#onEmojiSelect" style="-fx-background-radius: 15em; -fx-min-width: 30px; -fx-min-height: 30px; -fx-max-width: 30px; -fx-max-height: 30px; -fx-background-color: -fx-body-color; -fx-background-insets: 0px; -fx-padding: 0px; -fx-background-image: url(/data/images/emojis/worried-face.png); -fx-background-size: 30px 30px; -fx-background-repeat: no-repeat; -fx-background-position: center;" />
-                                             <Button layoutX="330.0" layoutY="330.0" mnemonicParsing="false" onAction="#onEmojiSelect" style="-fx-background-radius: 15em; -fx-min-width: 30px; -fx-min-height: 30px; -fx-max-width: 30px; -fx-max-height: 30px; -fx-background-color: -fx-body-color; -fx-background-insets: 0px; -fx-padding: 0px; -fx-background-image: url(/data/images/emojis/confused-face.png); -fx-background-size: 30px 30px; -fx-background-repeat: no-repeat; -fx-background-position: center;" />
                                              <Button layoutX="340.0" layoutY="340.0" mnemonicParsing="false" onAction="#onEmojiSelect" style="-fx-background-radius: 15em; -fx-min-width: 30px; -fx-min-height: 30px; -fx-max-width: 30px; -fx-max-height: 30px; -fx-background-color: -fx-body-color; -fx-background-insets: 0px; -fx-padding: 0px; -fx-background-image: url(/data/images/emojis/persevering-face.png); -fx-background-size: 30px 30px; -fx-background-repeat: no-repeat; -fx-background-position: center;" />
                                              <Button layoutX="350.0" layoutY="350.0" mnemonicParsing="false" onAction="#onEmojiSelect" style="-fx-background-radius: 15em; -fx-min-width: 30px; -fx-min-height: 30px; -fx-max-width: 30px; -fx-max-height: 30px; -fx-background-color: -fx-body-color; -fx-background-insets: 0px; -fx-padding: 0px; -fx-background-image: url(/data/images/emojis/confounded-face.png); -fx-background-size: 30px 30px; -fx-background-repeat: no-repeat; -fx-background-position: center;" />
                                              <Button layoutX="360.0" layoutY="360.0" mnemonicParsing="false" onAction="#onEmojiSelect" style="-fx-background-radius: 15em; -fx-min-width: 30px; -fx-min-height: 30px; -fx-max-width: 30px; -fx-max-height: 30px; -fx-background-color: -fx-body-color; -fx-background-insets: 0px; -fx-padding: 0px; -fx-background-image: url(/data/images/emojis/tired-face.png); -fx-background-size: 30px 30px; -fx-background-repeat: no-repeat; -fx-background-position: center;" />
@@ -137,7 +136,7 @@
                      </CustomMenuItem>
                   </items>
                </MenuButton>
-               <Button fx:id="sendButton" disable="false" mnemonicParsing="false" onAction="#sendMessage" prefWidth="54.0" text="Send">
+               <Button fx:id="sendButton" disable="true" mnemonicParsing="false" onAction="#sendMessage" prefWidth="54.0" text="Send">
                   <HBox.margin>
                      <Insets right="2.0" />
                   </HBox.margin></Button>
@@ -148,23 +147,23 @@
    <right>
       <Pane prefHeight="800.0" prefWidth="700.0" style="-fx-background-color: #808080;" BorderPane.alignment="CENTER">
          <children>
-            <Pane layoutX="1.0" prefHeight="800.0" prefWidth="699.0" style="-fx-background-color: #696969;">
+            <Pane layoutX="1.0" layoutY="300.0" prefHeight="500.0" prefWidth="699.0" style="-fx-background-color: #696969;">
                <children>
-                  <Button layoutX="618.0" layoutY="750.0" mnemonicParsing="false" onAction="#showReceiverFeedback" text="Done" />
-                  <Text fx:id="emotionPromptText" layoutX="97.0" layoutY="122.0" scaleX="1.5" scaleY="1.5" strokeType="OUTSIDE" strokeWidth="0.0" text="Identify the emotion in the text:" />
-                  <Slider fx:id="emotionStrengthMeter" blendMode="COLOR_BURN" blockIncrement="1.0" layoutX="47.0" layoutY="256.0" majorTickUnit="1.0" max="5.0" min="1.0" prefHeight="44.0" prefWidth="532.0" showTickLabels="true" snapToTicks="true" />
-                  <Text fx:id="strengthPromptText" layoutX="100.0" layoutY="229.0" scaleX="1.5" scaleY="1.5" strokeType="OUTSIDE" strokeWidth="0.0" text="Rate the strength of this emotion:" />
-                  <Text layoutX="20.0" layoutY="316.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Very weak" />
-                  <Text layoutX="528.0" layoutY="316.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Very strong" />
-                  <Text fx:id="emotionConfidencePromptText" layoutX="160.0" layoutY="405.0" scaleX="1.5" scaleY="1.5" strokeType="OUTSIDE" strokeWidth="0.0" text="How confident are you that you chose the correct emotion? " wrappingWidth="419.05462646484375" />
-                  <Slider fx:id="emotionConfidenceMeter" blendMode="COLOR_BURN" blockIncrement="1.0" layoutX="47.0" layoutY="440.0" majorTickUnit="1.0" max="5.0" min="1.0" prefHeight="44.0" prefWidth="532.0" showTickLabels="true" snapToTicks="true" />
-                  <Text layoutX="23.0" layoutY="510.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Not confident at all" />
-                  <Text layoutX="520.0" layoutY="510.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Very confident" />
-                  <Text fx:id="strengthConfidencePromptText" layoutX="156.0" layoutY="601.0" scaleX="1.5" scaleY="1.5" strokeType="OUTSIDE" strokeWidth="0.0" text="How confident are you that you accurately rated the strength of the emotion?" wrappingWidth="386.3255310058594" />
-                  <Slider fx:id="strengthConfidenceMeter" blendMode="COLOR_BURN" blockIncrement="1.0" layoutX="47.0" layoutY="654.0" majorTickUnit="1.0" max="5.0" min="1.0" prefHeight="44.0" prefWidth="532.0" showTickLabels="true" snapToTicks="true" />
-                  <Text layoutX="23.0" layoutY="718.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Not confident at all" />
-                  <Text layoutX="520.0" layoutY="718.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Very confident" />
-                  <ComboBox fx:id="emotionMenu" layoutX="437.0" layoutY="105.0" prefWidth="150.0" promptText="(Select one)" value="(Select one)">
+                  <Button layoutX="631.0" layoutY="458.0" mnemonicParsing="false" onAction="#onClickDone" text="Done" />
+                  <Text fx:id="emotionPromptText" layoutX="106.0" layoutY="51.0" scaleX="1.5" scaleY="1.5" strokeType="OUTSIDE" strokeWidth="0.0" text="Identify the emotion in the text:" />
+                  <Slider fx:id="emotionStrengthMeter" blendMode="COLOR_BURN" blockIncrement="1.0" layoutX="52.0" layoutY="126.0" majorTickUnit="1.0" max="5.0" min="1.0" prefHeight="44.0" prefWidth="532.0" showTickLabels="true" snapToTicks="true" />
+                  <Text fx:id="strengthPromptText" layoutX="107.0" layoutY="107.0" scaleX="1.5" scaleY="1.5" strokeType="OUTSIDE" strokeWidth="0.0" text="Rate the strength of this emotion:" />
+                  <Text layoutX="47.0" layoutY="190.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Very weak" />
+                  <Text layoutX="528.0" layoutY="189.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Very strong" />
+                  <Text fx:id="emotionConfidencePromptText" layoutX="162.0" layoutY="233.0" scaleX="1.5" scaleY="1.5" strokeType="OUTSIDE" strokeWidth="0.0" text="How confident are you that you chose the correct emotion? " wrappingWidth="419.05462646484375" />
+                  <Slider fx:id="emotionConfidenceMeter" blendMode="COLOR_BURN" blockIncrement="1.0" layoutX="52.0" layoutY="261.0" majorTickUnit="1.0" max="5.0" min="1.0" prefHeight="44.0" prefWidth="532.0" showTickLabels="true" snapToTicks="true" />
+                  <Text layoutX="47.0" layoutY="325.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Not confident at all" />
+                  <Text layoutX="528.0" layoutY="324.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Very confident" />
+                  <Text fx:id="strengthConfidencePromptText" layoutX="153.0" layoutY="362.0" scaleX="1.5" scaleY="1.5" strokeType="OUTSIDE" strokeWidth="0.0" text="How confident are you that you accurately rated the strength of the emotion?" wrappingWidth="386.3255310058594" />
+                  <Slider fx:id="strengthConfidenceMeter" blendMode="COLOR_BURN" blockIncrement="1.0" layoutX="58.0" layoutY="400.0" majorTickUnit="1.0" max="5.0" min="1.0" prefHeight="44.0" prefWidth="532.0" showTickLabels="true" snapToTicks="true" />
+                  <Text layoutX="47.0" layoutY="462.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Not confident at all" />
+                  <Text layoutX="528.0" layoutY="461.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Very confident" />
+                  <ComboBox fx:id="emotionMenu" layoutX="446.0" layoutY="32.0" prefWidth="150.0" promptText="(Select one)" value="(Select one)">
                      <items>
                         <FXCollections fx:factory="observableArrayList">
                            <String fx:value="Sadness" />
@@ -178,18 +177,24 @@
                      </items>
                   </ComboBox>
                </children></Pane>
+            <MediaView fx:id="mediaView" fitHeight="250.0" fitWidth="500.0" layoutX="101.0" layoutY="14.0" />
+            <HBox layoutX="104.0" layoutY="271.0" prefHeight="29.0" prefWidth="488.0">
+               <children>
+                  <Button fx:id="videoButton" mnemonicParsing="false" onAction="#controlVideo" text="play" visible="false" />
+                  <Button fx:id="replayButton" mnemonicParsing="false" onAction="#restartVideo" text="replay" visible="false" />
+               </children>
+            </HBox>
             <Canvas fx:id="overlay" disable="true" height="800.0" width="700.0" />
             <Button fx:id="quitButton" layoutX="297.0" layoutY="479.0" mnemonicParsing="false" onAction="#onClickQuit" prefWidth="108.0" text="Quit">
                <font>
                   <Font size="18.0" />
                </font>
             </Button>
-            <Button fx:id="swapButton" layoutX="315.0" layoutY="430.0" mnemonicParsing="false" onAction="#onClickSwap" text="Swap">
+            <Text fx:id="videoText" layoutX="220.0" layoutY="150.0" strokeType="OUTSIDE" strokeWidth="0.0" text="What the sender viewed will show up here..." textAlignment="CENTER" wrappingWidth="322.887939453125">
                <font>
-                  <Font size="18.0" />
+                  <Font size="24.0" />
                </font>
-            </Button>
-            <MediaView fx:id="mediaView" fitHeight="250.0" fitWidth="500.0" layoutX="100.0" layoutY="275.0" />
+            </Text>
          </children>
          <BorderPane.margin>
             <Insets />

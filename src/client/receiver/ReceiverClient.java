@@ -3,23 +3,15 @@ package client.receiver;
 import game.CommunicationConstants;
 import game.VideoPlayer;
 import javafx.application.Platform;
-import javafx.fxml.FXMLLoader;
 import javafx.geometry.VPos;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.Slider;
-import javafx.scene.control.TextArea;
+import javafx.scene.control.*;
 import javafx.scene.media.MediaView;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
-import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -31,11 +23,8 @@ public class ReceiverClient implements Runnable, CommunicationConstants {
     private Scanner in;
     private PrintWriter out;
     private String name;
-    private String role;
-    private String currentVideo;
-    private String receiverInfo;
     private String messageSentTimestamp = "";
-    private boolean gameEnded;
+    private boolean gameEnded = false;
 
     // display elements
     private TextArea textArea;
@@ -50,14 +39,17 @@ public class ReceiverClient implements Runnable, CommunicationConstants {
     private Text strengthPromptText;
     private Text emotionConfidencePromptText;
     private Text strengthConfidencePromptText;
-    private Button swapButton;
+    private Button sendButton;
+    private Button videoButton;
+    private Button replayButton;
     private Button quitButton;
+    private Text videoText;
 
     public ReceiverClient(String server, int port, String name, TextArea textArea, Canvas overlay, MediaView mediaView,
                           VideoPlayer videoPlayer, ComboBox emotionMenu, Slider emotionStrengthMeter,
                           Slider emotionConfidenceMeter, Slider strengthConfidenceMeter, Text emotionPromptText,
                           Text strengthPromptText, Text emotionConfidencePromptText, Text strengthConfidencePromptText,
-                          Button swapButton, Button quitButton){
+                          Button sendButton, Button videoButton, Button replayButton, Button quitButton, Text videoText){
         try {
             this.socket = new Socket(server, port);
             this.in = new Scanner(socket.getInputStream());
@@ -76,9 +68,11 @@ public class ReceiverClient implements Runnable, CommunicationConstants {
             this.strengthPromptText = strengthPromptText;
             this.emotionConfidencePromptText = emotionConfidencePromptText;
             this.strengthConfidencePromptText = strengthConfidencePromptText;
-            this.swapButton = swapButton;
+            this.sendButton = sendButton;
+            this.videoButton = videoButton;
+            this.replayButton = replayButton;
             this.quitButton = quitButton;
-
+            this.videoText = videoText;
         } catch(IOException e){
             System.out.println("Could not connect.");
             e.printStackTrace();
@@ -92,13 +86,22 @@ public class ReceiverClient implements Runnable, CommunicationConstants {
 
     public void setMessageTimestamp(String messageTimestamp){
         this.messageSentTimestamp = messageTimestamp;
-        // out.println(MESSAGE_SENT + messageTimestamp);
     }
 
     public void sendData(String emotion, double emotionStrength, double emotionConfidence,
                          double emotionStrengthConfidence, String receiverTimestamp){
         out.println(RECEIVER_DATA + "," + emotion + "," + emotionStrength + "," + emotionConfidence + "," +
                 emotionStrengthConfidence + "," + receiverTimestamp);
+    }
+
+    public void sendDataAsSender(String video, String emotion, double emotionStrength, double emotionConfidence,
+                         double emotionStrengthConfidence, int numTimesReplayed, String senderTimestamp){
+        if (messageSentTimestamp.equals("")){
+            messageSentTimestamp = "No message was sent";
+        }
+        out.println(SENDER_DATA + "," + video + "," + emotion + "," + emotionStrength + "," + emotionConfidence + "," +
+                emotionStrengthConfidence + "," + numTimesReplayed + "," + senderTimestamp + "," + messageSentTimestamp);
+        messageSentTimestamp = "";
     }
 
     /*
@@ -108,43 +111,57 @@ public class ReceiverClient implements Runnable, CommunicationConstants {
     public void run() {
         try {
             String response = in.nextLine();
-            role = response;
             out.println(RECEIVER_NAME + name);
             while (in.hasNextLine()){
                 response = in.nextLine();
-                if (response.startsWith(VIDEO)){
-                    this.currentVideo = response.substring(1);
-                } else if (response.startsWith(MESSAGE)){
+                if (response.startsWith(MESSAGE)){
                     String msg = response.substring(1);
                     this.textArea.appendText(msg + "\n");
-                } else if (response.startsWith(SHOW_FEEDBACK)){
+                } else if (response.equals(OPPONENT_LEFT)) {
+                    System.out.println("Opponent left");
+                    break;
+                } else if (response.startsWith(SHOW_RECEIVER_FEEDBACK)){
+                    boolean swap = response.endsWith(SWAP);
                     videoPlayer.getMediaPlayer().setOnEndOfMedia(() -> {
                         try {
                             Thread.sleep(1000);
+                            if (!swap){
+                                this.videoText.setText("What the sender viewed will show up here...");
+                            }
                         } catch (InterruptedException e) {
                             e.printStackTrace();
                         }
-                        this.resetDisplay();
-                        // Platform.runLater(() -> this.resetDisplay());
+                        if (swap){
+                            swapDisplay();
+                        } else {
+                            resetDisplay();
+                        }
                     });
-                } else if (response.startsWith(SWAP)){
-                    this.swapButton.setVisible(true);
-                    this.swapButton.setDisable(false);
-                    GraphicsContext gc = this.overlay.getGraphicsContext2D();
-                    gc.setFill(Color.color(0.5, 0.5, 0.5, 0.9));
-                    gc.clearRect(0, 0, 1000, 800);
-                    gc.fillRect(0, 0, 1000, 800);
-                    gc.setTextAlign(TextAlignment.CENTER);
-                    gc.setTextBaseline(VPos.TOP);
-                    gc.setFont(Font.font(40.0));
-                    gc.setFill(Color.BLACK);
-                    gc.fillText(
-                            "Your turn to be the sender!",
-                            Math.round(overlay.getWidth()  / 2),
-                            Math.round(overlay.getHeight() / 2)
-                    );
-                    this.overlay.setDisable(false);
-                    this.overlay.setVisible(true);
+                    if (gameEnded){
+                        break;
+                    }
+                } else if (response.startsWith(SHOW_SENDER_FEEDBACK)){
+                    boolean swap = response.endsWith(SWAP);
+                    // disable "waiting.." overlay
+                    disableOverlay();
+                    String[] data = response.split(",");
+                    Platform.runLater(() -> this.emotionMenu.setValue(data[1]));
+                    this.emotionStrengthMeter.setValue(Double.valueOf(data[2]));
+                    this.emotionConfidenceMeter.setValue(Double.valueOf(data[3]));
+                    this.strengthConfidenceMeter.setValue(Double.valueOf(data[4]));
+                    this.emotionPromptText.setText("Receiver's entered emotion:");
+                    this.strengthPromptText.setText("Receiver's entered emotion strength:");
+                    this.emotionConfidencePromptText.setText("Receiver's confidence in emotion:");
+                    this.strengthConfidencePromptText.setText("Receiver's confidence in emotion strength:");
+                    Thread.sleep(5000);
+                    if (swap){
+                        resetDisplay();
+                    } else {
+                        swapDisplay();
+                    }
+                    if (gameEnded){
+                        break;
+                    }
                 }
             }
         } catch (Exception e){
@@ -161,19 +178,55 @@ public class ReceiverClient implements Runnable, CommunicationConstants {
 
     public void resetDisplay(){
         if (!this.videoPlayer.loadNextVideo()){
-            this.gameEnded = true;
             Platform.runLater(() -> this.gameOver());
             out.println(RECEIVER_QUIT);
             return;
         }
+        this.sendButton.setDisable(true);
+        this.videoButton.setVisible(false);
+        this.replayButton.setVisible(false);
+        this.videoText.setVisible(true);
+        this.videoText.setText("What the sender viewed will show up here...");
         this.mediaView.setVisible(false);
         this.mediaView.setDisable(true);
         this.mediaView.setMediaPlayer(videoPlayer.getMediaPlayer());
         disableOverlay();
-        this.emotionMenu.setValue("(Select one)");
+        Platform.runLater(() -> this.emotionMenu.setValue("(Select one)"));
         this.emotionStrengthMeter.setValue(0);
         this.emotionConfidenceMeter.setValue(0);
         this.strengthConfidenceMeter.setValue(0);
+        this.emotionPromptText.setText("Identify the emotion in the text:");
+        this.strengthPromptText.setText("Rate the strength of this emotion:");
+        this.emotionConfidencePromptText.setText("How confident are you that you chose" +
+                " the correct emotion?");
+        this.strengthConfidencePromptText.setText("How confident are you that you " +
+                "accurately rated the strength of the emotion?");
+    }
+
+    public void swapDisplay(){
+        if (!this.videoPlayer.loadNextVideo()){
+            this.gameOver();
+            out.println(SENDER_QUIT);
+            return;
+        }
+        this.sendButton.setDisable(false);
+        this.replayButton.setVisible(true);
+        this.videoButton.setVisible(true);
+        this.videoText.setVisible(false);
+        this.videoText.setText("");
+        this.mediaView.setVisible(true);
+        this.mediaView.setDisable(false);
+        this.mediaView.setMediaPlayer(videoPlayer.getMediaPlayer());
+        Platform.runLater(() -> this.emotionMenu.setValue("(Select one)"));
+        this.emotionStrengthMeter.setValue(0);
+        this.emotionConfidenceMeter.setValue(0);
+        this.strengthConfidenceMeter.setValue(0);
+        this.emotionPromptText.setText("Identify the emotion in the video:");
+        this.strengthPromptText.setText("Rate the strength of this emotion:");
+        this.emotionConfidencePromptText.setText("How confident are you that the receiver will choose" +
+                " the correct emotion?");
+        this.strengthConfidencePromptText.setText("How confident are you that the receiver will " +
+                "accurately rate the strength of the emotion?");
     }
 
     public void disableOverlay(){
@@ -182,6 +235,8 @@ public class ReceiverClient implements Runnable, CommunicationConstants {
     }
 
     public void gameOver(){
+        this.gameEnded = true;
+        this.videoText.setVisible(false);
         this.mediaView.setVisible(false);
         this.mediaView.setDisable(true);
         this.quitButton.setVisible(true);
@@ -207,6 +262,4 @@ public class ReceiverClient implements Runnable, CommunicationConstants {
             e.printStackTrace();
         }
     }
-
 }
-

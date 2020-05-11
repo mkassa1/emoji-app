@@ -26,6 +26,7 @@ public class Server {
         } finally {
             try{
                 listener.close();
+                System.out.println("Server has closed.");
             } catch(IOException e){
                 System.out.println("Could not close Server.");
                 e.printStackTrace();

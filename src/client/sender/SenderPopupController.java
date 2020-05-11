@@ -4,10 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
-import javafx.scene.control.Button;
-import javafx.scene.control.RadioButton;
-import javafx.scene.control.TextField;
-import javafx.scene.control.ToggleGroup;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 
 import java.io.BufferedWriter;
@@ -18,7 +15,6 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class SenderPopupController implements Initializable {
-    private Stage stage;
     @FXML
     private TextField languageField;
     @FXML
@@ -56,7 +52,11 @@ public class SenderPopupController implements Initializable {
     }
 
     @FXML
-    private void onSubmitExitForm(ActionEvent event){
+    private void onSubmitExitForm(ActionEvent event) {
+        if (languageField.getText() == null || emojiFrequency.getSelectedToggle() == null ||
+                handedness.getSelectedToggle() == null || genderField.getText() == null){
+            return;
+        }
         String nativeLanguage = languageField.getText();
         String emojiFrequencyAsString = emojiFrequency.getSelectedToggle().toString();
         int start = emojiFrequencyAsString.indexOf("'") + 1;
@@ -90,9 +90,4 @@ public class SenderPopupController implements Initializable {
             e.printStackTrace();
         }
     }
-
-    public void setStage(Stage stage){
-        this.stage = stage;
-    }
-
 }

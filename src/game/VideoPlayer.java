@@ -7,7 +7,7 @@ import java.io.File;
 import java.util.ArrayList;
 
 public class VideoPlayer {
-    private ArrayList<String> videos; // holds all video links
+    private ArrayList<String> videos; // all video links
     private Media media;
     private MediaPlayer mediaPlayer;
     private String path;
@@ -35,6 +35,7 @@ public class VideoPlayer {
      * returns true if video player hasn't run out of videos to load
      */
     public boolean loadNextVideo(){
+        System.out.println(path);
         numTimesPlayed = 0;
         index++;
         if (index >= videos.size()){
@@ -44,9 +45,6 @@ public class VideoPlayer {
         this.media = new Media(path);
         this.mediaPlayer = new MediaPlayer(media);
         return true;
-    }
-
-    public void enableAutoPlay(){ mediaPlayer.setAutoPlay(true);
     }
 
     public void play(){
@@ -66,18 +64,6 @@ public class VideoPlayer {
 
     public boolean onEndOfVideo(){
         return (mediaPlayer.getCurrentTime().equals(mediaPlayer.getTotalDuration()));
-    }
-
-    public String getPath(){
-        return path;
-    }
-
-    public void setPath(String path){
-        this.path = path;
-    }
-
-    public void loadVideo(String path){
-        this.media = new Media(path);
     }
 
     public MediaPlayer getMediaPlayer(){

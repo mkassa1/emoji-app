@@ -2,7 +2,9 @@ package client.receiver;
 
 import de.jensd.fx.glyphs.GlyphsDude;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcons;
+import game.CommunicationConstants;
 import game.EmojiMappings;
+import game.Instructions;
 import game.VideoPlayer;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -23,14 +25,12 @@ import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
 
-import java.io.IOException;
 import java.net.URL;
-import java.nio.charset.Charset;
 import java.sql.Timestamp;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
-public class ReceiverController implements Initializable {
+public class ReceiverController implements Initializable, CommunicationConstants {
     @FXML
     private TextArea textArea;
     @FXML
@@ -40,6 +40,8 @@ public class ReceiverController implements Initializable {
     private VideoPlayer videoPlayer;
     @FXML
     private Button videoButton;
+    @FXML
+    private Button replayButton;
     @FXML
     private Text emotionPromptText;
     @FXML
@@ -53,8 +55,6 @@ public class ReceiverController implements Initializable {
     @FXML
     private Button sendButton;
     @FXML
-    private Button swapButton;
-    @FXML
     private Button quitButton;
     @FXML
     private Canvas overlay;
@@ -66,25 +66,51 @@ public class ReceiverController implements Initializable {
     private Slider emotionConfidenceMeter;
     @FXML
     private Slider strengthConfidenceMeter;
+    @FXML
+    private Text videoText;
 
     private String receiverTimestamp;
     private String messageSentTimestamp;
     private EmojiMappings map;
     private String name;
     private boolean isPlaying = false;
-    private boolean showVideoPlayback = true;
 
     private ReceiverClient client;
 
     @FXML
-    public void showReceiverFeedback(ActionEvent event) throws IOException {
+    public void controlVideo(ActionEvent event){
+        if (!isPlaying){
+            videoButton.setText("pause");
+            videoPlayer.play();
+        } else {
+            videoButton.setText("play");
+            videoPlayer.pause();
+        }
+        isPlaying = !isPlaying;
+    }
+
+    @FXML
+    public void restartVideo(ActionEvent event){
+        if (videoPlayer.onEndOfVideo()){
+            videoPlayer.restart();
+        }
+    }
+
+    @FXML
+    public void onClickDone(ActionEvent event) {
+        boolean isSenderTest = videoButton.isVisible();
+        System.out.println("Receiver is Sender: " + isSenderTest);
+        if (isSenderTest){
+            showSenderFeedback();
+        } else {
+            showReceiverFeedback();
+        }
+    }
+
+    public void showReceiverFeedback() {
         Timestamp timestamp = new Timestamp(System.currentTimeMillis());
         this.receiverTimestamp = timestamp.toString();
-
-        /* video playback will be parameterized
-        if (showVideoPlayback){
-        } */
-        setOverlay();
+        this.videoText.setText("");
         String emotion = (String) emotionMenu.getValue();
         double emotionStrength = emotionStrengthMeter.getValue();
         double emotionConfidence = emotionConfidenceMeter.getValue();
@@ -93,6 +119,34 @@ public class ReceiverController implements Initializable {
         this.mediaView.setDisable(false);
         this.videoPlayer.play();
         client.sendData(emotion, emotionStrength, emotionConfidence, emotionStrengthConfidence, receiverTimestamp);
+    }
+
+    public void showSenderFeedback(){
+        GraphicsContext gc = this.overlay.getGraphicsContext2D();
+        gc.setFill(Color.color(0.5, 0.5, 0.5, 0.9));
+        gc.fillRect(0, 0, 1000, 800);
+        gc.setTextAlign(TextAlignment.CENTER);
+        gc.setTextBaseline(VPos.CENTER);
+        gc.setFont(Font.font(40.0));
+        gc.setFill(Color.BLACK);
+        gc.fillText(
+                "Waiting for receiver...",
+                Math.round(overlay.getWidth()  / 2),
+                Math.round(overlay.getHeight() / 2)
+        );
+        this.overlay.setDisable(false);
+        this.overlay.setVisible(true);
+        String video = this.videoPlayer.getMediaPlayer().getMedia().getSource();
+        String emotion = (String) emotionMenu.getValue();
+        double emotionStrength = emotionStrengthMeter.getValue();
+        double emotionConfidence = emotionConfidenceMeter.getValue();
+        double emotionStrengthConfidence = strengthConfidenceMeter.getValue();
+        int numTimesPlayed = videoPlayer.getNumTimesPlayed();
+        Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+        this.receiverTimestamp = timestamp.toString();
+
+        this.client.sendDataAsSender(video, emotion, emotionStrength, emotionConfidence, emotionStrengthConfidence,
+                numTimesPlayed, receiverTimestamp);
     }
 
     @FXML
@@ -106,27 +160,21 @@ public class ReceiverController implements Initializable {
     }
 
     @FXML
-    private void onClickSwap(ActionEvent event) throws Exception{
-        Parent newView = FXMLLoader.load(getClass().getResource("/client/sender/sender_screen.fxml"));
-        Scene newScene = new Scene(newView);
-        Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
-        window.setScene(newScene);
-        window.show();
-    }
-
-    @FXML
     private void onClickQuit(ActionEvent event) throws Exception {
         Parent exitForm = FXMLLoader.load(getClass().getResource("receiver_popup.fxml"));
         Scene exitFormScene = new Scene(exitForm);
         Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
         window.setScene(exitFormScene);
+        window.setResizable(false);
         window.show();
     }
 
     @FXML
     private void sendMessage(ActionEvent event) {
+        if (message.getText() == null || message.getText().isEmpty()){
+            return;
+        }
         Timestamp timestamp = new Timestamp(System.currentTimeMillis());
-        System.out.println("Message sent at: " + timestamp);
         this.messageSentTimestamp = timestamp.toString();
         String msg = name + " > " + message.getText();
         client.sendMessage(msg);
@@ -134,32 +182,25 @@ public class ReceiverController implements Initializable {
         message.clear();
     }
 
-    public void setOverlay(){
-        GraphicsContext gc = this.overlay.getGraphicsContext2D();
-        gc.setFill(Color.color(0.5, 0.5, 0.5, 0.9));
-        gc.fillRect(0, 0, 1000, 800);
-        gc.setTextAlign(TextAlignment.CENTER);
-        gc.setTextBaseline(VPos.TOP);
-        gc.setFont(Font.font(40.0));
-        gc.setFill(Color.BLACK);
-        gc.fillText(
-                "Here's what the sender watched:",
-                Math.round(overlay.getWidth()  / 2),
-                Math.round(overlay.getHeight() / 5)
-        );
-        this.overlay.setDisable(false);
-        this.overlay.setVisible(true);
-    }
-
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // Prompt for player's name
         TextInputDialog dialog = new TextInputDialog();
-        dialog.setTitle("Start");
+        dialog.setTitle("Welcome!");
         dialog.setHeaderText(null);
         dialog.setContentText("Enter your name:");
         Optional<String> result = dialog.showAndWait();
         result.ifPresent(name -> this.name = name);
+        if (!result.isPresent()){
+            return;
+        } else {
+            dialog.setContentText("Please enter your name:");
+            while (!result.isPresent() || result.get().isEmpty()){
+                if (!result.isPresent()){
+                    return;
+                }
+                result = dialog.showAndWait();
+            }
+        }
 
         // initialize emoji picker
         this.map = new EmojiMappings();
@@ -168,6 +209,11 @@ public class ReceiverController implements Initializable {
 
         // initialize video player
         this.videoPlayer = new VideoPlayer();
+        if (mediaView != null){
+            this.mediaView.setMediaPlayer(videoPlayer.getMediaPlayer());
+        }
+        this.mediaView.setVisible(false);
+        this.mediaView.setDisable(true);
 
         message.setOnKeyPressed(e -> {
             if(e.getCode() == KeyCode.ENTER) {
@@ -175,26 +221,24 @@ public class ReceiverController implements Initializable {
             }
         });
 
-        this.swapButton.setVisible(false);
-        this.swapButton.setDisable(true);
         this.quitButton.setVisible(false);
         this.quitButton.setDisable(true);
 
-        if (mediaView != null){
-            this.mediaView.setMediaPlayer(videoPlayer.getMediaPlayer());
-        }
-        this.mediaView.setVisible(false);
-        this.mediaView.setDisable(true);
+        // show instructions
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Welcome!");
+        alert.setHeaderText("How to play");
+        alert.setContentText(Instructions.RECEIVER_INSN);
+        alert.showAndWait();
 
         // Start the client's thread
         this.client = new ReceiverClient("127.0.0.1", 8000, this.name, this.textArea, this.overlay, this.mediaView, this.videoPlayer,
                 this.emotionMenu,  this.emotionStrengthMeter, this.emotionConfidenceMeter, this.strengthConfidenceMeter,
                 this.emotionPromptText, this.strengthPromptText, this.emotionConfidencePromptText, this.strengthConfidencePromptText,
-                this.swapButton, this.quitButton);
+                this.sendButton, this.videoButton, this.replayButton, this.quitButton, this.videoText);
 
         new Thread(client).start();
     }
-
 }
 
 

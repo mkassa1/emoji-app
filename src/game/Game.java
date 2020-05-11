@@ -10,11 +10,8 @@ public class Game implements CommunicationConstants {
     private int turns = -1;
     private int subRounds = 0;
     private int round = 1;
-    private int score = 0;
     private FileWriter fw;
     private File outputFile;
-    private String guess;
-    private String answer;
 
     // game data
     private String videoSenderViewed;
@@ -31,6 +28,7 @@ public class Game implements CommunicationConstants {
     private String receiverConfidenceEmotion;
     private String receiverConfidenceIntensity;
     private String receiverTimestamp;
+    private String video;
 
     public class Player implements Runnable, CommunicationConstants {
         private Socket socket;
@@ -39,7 +37,6 @@ public class Game implements CommunicationConstants {
         private String name;
         private String role;
         private Player opponent;
-        private boolean closed = false;
         private boolean gameEnded;
 
         public Player(Socket socket, String role) {
@@ -66,7 +63,7 @@ public class Game implements CommunicationConstants {
                 e.printStackTrace();
             } finally {
                 if (opponent != null && opponent.output != null && !gameEnded) {
-                    opponent.output.println("OPPONENT LEFT");
+                    opponent.output.println(OPPONENT_LEFT);
                     gameEnded = true;
                 }
                 try {
@@ -86,17 +83,10 @@ public class Game implements CommunicationConstants {
 
             if (role.equals("Sender")) {
                 sender = this;
-                output.println("MESSAGE Waiting for receiver to connect...");
-                sender.output.println("INSN");
             } else if (role.equals("Receiver")) {
                 receiver = this;
                 opponent = sender;
                 sender.opponent = this;
-
-                receiver.output.println("INSN");
-
-                receiver.output.println("MESSAGE Waiting for game to start...");
-                sender.output.println("MESSAGE Waiting for game to start...");
                 sender.output.println(CLIENTS_CONNECTED);
             }
         }
@@ -128,25 +118,14 @@ public class Game implements CommunicationConstants {
         /* main loop where server thread listens for messages from sender and receiver clients
          * primarily takes in data from client to write to results file
          */
-        private void processCommands() throws IOException {
+        private void processCommands() {
             while (input.hasNextLine()) {
                 String command = input.nextLine();
-                if (command.startsWith("QUIT")) {
-                    gameEnded = true;
-                    try {
-                        fw.write(command.substring(5));
-                        fw.write("\n");
-                    } catch (IOException e) {
-                        fw = new FileWriter(outputFile, true);
-                        fw.write(command.substring(5));
-                    } catch (Exception e) {}
-                    return;
-                } else if (command.startsWith(RECEIVER_NAME)){
+                if (command.startsWith(RECEIVER_NAME)){
                     receiver.setName(command.substring(1));
                 } else if (command.startsWith(SENDER_NAME)){
                     sender.setName(command.substring(1));
-                }
-                else if (command.startsWith(MESSAGE)){ // for text messages between receiver + sender
+                } else if (command.startsWith(MESSAGE)){ // for text messages between receiver + sender
                     String msg = command.substring(1);
                     message = msg.substring(msg.indexOf(">") + 2);
                     sender.output.println(MESSAGE + msg);
@@ -158,15 +137,21 @@ public class Game implements CommunicationConstants {
                     receiverConfidenceEmotion = data[3];
                     receiverConfidenceIntensity = data[4];
                     receiverTimestamp = data[5];
-                    sender.output.println(SHOW_FEEDBACK + "," + receiverEmotion + "," + receiverEmotionIntensity + ","
-                            + receiverConfidenceEmotion + "," + receiverConfidenceIntensity);
                     writeResults();
+
                     if (subRounds == turns) {
+                        sender.output.println(SHOW_SENDER_FEEDBACK + "," + receiverEmotion + "," + receiverEmotionIntensity + ","
+                                + receiverConfidenceEmotion + "," + receiverConfidenceIntensity + SWAP);
+                        receiver.output.println(SHOW_RECEIVER_FEEDBACK + video + SWAP);
                         swapRoles();
+                    } else {
+                        sender.output.println(SHOW_SENDER_FEEDBACK + "," + receiverEmotion + "," + receiverEmotionIntensity + ","
+                                + receiverConfidenceEmotion + "," + receiverConfidenceIntensity);
+                        receiver.output.println(SHOW_RECEIVER_FEEDBACK + video);
                     }
                 } else if (command.startsWith(SENDER_DATA)){
                     String[] data = command.split(",");
-                    String video = data[1];
+                    video = data[1];
                     videoSenderViewed = video.substring(video.lastIndexOf("/") + 1);
                     senderEmotion = data[2];
                     senderEmotionIntensity = data[3];
@@ -174,51 +159,24 @@ public class Game implements CommunicationConstants {
                     senderConfidenceIntensity = data[5];
                     numTimesPlayed = Integer.valueOf(data[6]);
                     senderTimestamp = data[7];
+                    for (String s: data){
+                        System.out.println(s);
+                    }
                     messageSentTimestamp = data[8];
-                    receiver.output.println(SHOW_FEEDBACK + video);
                 } else if (command.startsWith(SENDER_QUIT) | command.startsWith(RECEIVER_QUIT)){
-                    return;
-                } else if (command.startsWith(RECEIVER_QUIT)){
                     return;
                 } else if (command.startsWith(MESSAGE_SENT)){
                     messageSentTimestamp = command.substring(2);
-                } else if (command.startsWith("CLOSED INSN")) {
-                    char mark = command.charAt(12);
-                    boolean lastToClose = false;
-                    if (mark == 'S') {
-                        sender.closed = true;
-                        if (receiver.closed) {
-                            lastToClose = true;
-                        } else {
-                            sender.output.println("MESSAGE Waiting for game to start...");
-                        }
-                    } else if (mark == 'R') {
-                        receiver.closed = true;
-                        if (sender != null && sender.closed) {
-                            lastToClose = true;
-                        }
-                    }
-                    if (lastToClose) {
-                        sender.output.println("MESSAGE Guess an image. Score: 0");
-                        receiver.output.println("MESSAGE Act out the highlighted image. Score: 0");
-                    }
                 }
             }
         }
     }
-
-    /*public boolean gameEnded() {
-        return gameEnded;
-    } */
 
     public void swapRoles() {
         subRounds = 0;
         Player temp = receiver;
         receiver = sender;
         sender = temp;
-
-        receiver.output.println(SWAP);
-        sender.output.println(SWAP);
     }
 
     public void writeResults() {
@@ -237,6 +195,7 @@ public class Game implements CommunicationConstants {
             fw.write("Receiver's confidence in chosen emotion: " + receiverConfidenceEmotion + " | ");
             fw.write("Receiver's confidence in chosen emotion intensity: " + receiverConfidenceIntensity + " [" + receiverTimestamp + "]" + "\n");
 
+            message = "none";
             round++;
             if (turns != -1) {
                 subRounds++;

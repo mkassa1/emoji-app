@@ -3,6 +3,7 @@ package client.sender;
 import de.jensd.fx.glyphs.GlyphsDude;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcons;
 import game.EmojiMappings;
+import game.Instructions;
 import game.VideoPlayer;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -15,34 +16,22 @@ import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.*;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
-import javafx.scene.layout.*;
 import javafx.scene.media.MediaView;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
-import javafx.scene.text.TextFlow;
 import javafx.stage.Stage;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.net.URL;
-import java.nio.charset.Charset;
 import java.sql.Timestamp;
-import java.util.HashMap;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class SenderController implements Initializable {
     @FXML
     private TextArea textArea;
-    @FXML
-    private TextFlow messageFlow;
     @FXML
     private TextField message;
     @FXML
@@ -51,9 +40,9 @@ public class SenderController implements Initializable {
     @FXML
     private Button videoButton;
     @FXML
-    private Button sendButton;
+    private Button replayButton;
     @FXML
-    private Button swapButton;
+    private Button sendButton;
     @FXML
     private Button quitButton;
     @FXML
@@ -69,10 +58,6 @@ public class SenderController implements Initializable {
     @FXML
     private MenuButton emojiButton;
     @FXML
-    private HBox messageBox;
-    @FXML
-    private StackPane messagePane;
-    @FXML
     private Canvas overlay;
     @FXML
     private Slider emotionStrengthMeter;
@@ -80,13 +65,14 @@ public class SenderController implements Initializable {
     private Slider emotionConfidenceMeter;
     @FXML
     private Slider strengthConfidenceMeter;
+    @FXML
+    private Text videoText;
     private String name;
     private SenderClient client;
     private boolean isPlaying = false;
     private String messageSentTimestamp;
     private String senderTimestamp;
     private EmojiMappings map;
-    private boolean showVideoPlayback = true;
 
     @FXML
     public void controlVideo(ActionEvent event){
@@ -108,7 +94,16 @@ public class SenderController implements Initializable {
     }
 
     @FXML
-    public void showSenderFeedback(ActionEvent event) throws IOException {
+    public void onClickDone(ActionEvent event){
+        boolean isSenderTest = videoButton.isVisible();
+        if (isSenderTest){
+            showSenderFeedback();
+        } else {
+            showReceiverFeedback();
+        }
+    }
+
+    public void showSenderFeedback() {
         GraphicsContext gc = this.overlay.getGraphicsContext2D();
         gc.setFill(Color.color(0.5, 0.5, 0.5, 0.9));
         gc.fillRect(0, 0, 1000, 800);
@@ -136,6 +131,20 @@ public class SenderController implements Initializable {
                 numTimesPlayed, senderTimestamp);
     }
 
+    public void showReceiverFeedback(){
+        Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+        this.senderTimestamp = timestamp.toString();
+        this.videoText.setText("");
+        String emotion = (String) emotionMenu.getValue();
+        double emotionStrength = emotionStrengthMeter.getValue();
+        double emotionConfidence = emotionConfidenceMeter.getValue();
+        double emotionStrengthConfidence = strengthConfidenceMeter.getValue();
+        this.mediaView.setVisible(true);
+        this.mediaView.setDisable(false);
+        this.videoPlayer.play();
+        client.sendDataAsReceiver(emotion, emotionStrength, emotionConfidence, emotionStrengthConfidence, senderTimestamp);
+    }
+
     @FXML
     private void onEmojiSelect(ActionEvent event) {
         String emoji = (((Control)event.getSource()).getStyle());
@@ -146,26 +155,21 @@ public class SenderController implements Initializable {
         this.message.setText(message.getText() + emojiUnicode);
     }
 
-    @FXML // is causing errors
-    private void onClickSwap(ActionEvent event) throws Exception {
-        /*Parent newView = FXMLLoader.load(getClass().getResource("/client/receiver/receiver_screen.fxml"));
-        Scene newScene = new Scene(newView);
-        Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
-        window.setScene(newScene);
-        window.show(); */
-    }
-
     @FXML
     private void onClickQuit(ActionEvent event) throws Exception {
         Parent exitForm = FXMLLoader.load(getClass().getResource("sender_popup.fxml"));
         Scene exitFormScene = new Scene(exitForm);
         Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
         window.setScene(exitFormScene);
+        window.setResizable(false);
         window.show();
     }
 
     @FXML
     private void sendMessage(ActionEvent event) {
+        if (message.getText() == null || message.getText().isEmpty()){
+            return;
+        }
         Timestamp timestamp = new Timestamp(System.currentTimeMillis());
         this.messageSentTimestamp = timestamp.toString();
         String msg = name + " > " + message.getText();
@@ -194,13 +198,24 @@ public class SenderController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // Prompt for sender's name
+        // prompt sender for their name
         TextInputDialog dialog = new TextInputDialog();
         dialog.setTitle("Welcome!");
         dialog.setHeaderText(null);
         dialog.setContentText("Enter your name:");
         Optional<String> result = dialog.showAndWait();
         result.ifPresent(name -> this.name = name);
+        if (!result.isPresent()){
+            return;
+        } else {
+            dialog.setContentText("Please enter your name:");
+            while (!result.isPresent() || result.get().isEmpty()){
+                if (!result.isPresent()){
+                    return;
+                }
+                result = dialog.showAndWait();
+            }
+        }
 
         // initialize emoji picker
         this.map= new EmojiMappings();
@@ -213,8 +228,7 @@ public class SenderController implements Initializable {
             }
         });
 
-        this.swapButton.setVisible(false);
-        this.swapButton.setDisable(true);
+        this.sendButton.setDisable(true);
         this.quitButton.setVisible(false);
         this.quitButton.setDisable(true);
 
@@ -226,14 +240,20 @@ public class SenderController implements Initializable {
 
         setOverlay();
 
+        // show instructions
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Welcome!");
+        alert.setHeaderText("How to play");
+        alert.setContentText(Instructions.SENDER_INSN);
+        alert.showAndWait();
+
         // Start the sender's client thread
         this.client = new SenderClient("127.0.0.1", 8000, this.name, this.textArea, this.overlay, this.mediaView, this.videoPlayer,
                 this.emotionMenu, this.emotionStrengthMeter, this.emotionConfidenceMeter, this.strengthConfidenceMeter,
                 this.emotionPromptText, this.strengthPromptText, this.emotionConfidencePromptText, this.strengthConfidencePromptText,
-                this.swapButton,  this.quitButton);
+                this.sendButton, this.videoButton, this.replayButton, this.quitButton, this.videoText);
         new Thread(client).start();
     }
-
 }
 
 

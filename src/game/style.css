@@ -39,4 +39,9 @@ h1::before  {
     -fx-background-color: white;
 }
 
+.text-input {
+    -fx-font-weight: bold;
+    -fx-font-size: 14px;
+}
+
 <i class="em em---1" aria-role="presentation" aria-label="THUMBS UP SIGN"></i>
